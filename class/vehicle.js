@@ -1,7 +1,7 @@
 // const Bicycle = require("./bicycle.js");
 // const ElectricBicycle = require("./electric-bicycle.js");
-const Review = require("./review.js");
-const Tester = require("./tester.js");
+// const Review = require("./review.js");
+// const Tester = require("./tester.js");
 
 class Vehicle {
   constructor(modelName, year, price, reviews = []) {
@@ -40,52 +40,10 @@ class Vehicle {
         if (review[key] === testerName) {
           return review;
         }
+      }
     }
-  }
     return;
   }
 }
-
-let tester1 = new Tester("Bob Jones");
-let vehicle1 = new Vehicle("Toyota Prius", 2005, 23000);
-let review1 = new Review(
-  vehicle1,
-  tester1,
-  1,
-  "Great car, excellent gas mileage!"
-);
-
-let tester2 = new Tester("Desiree Smith");
-let vehicle2 = new Vehicle("Dodge Ram", 1985, 300);
-let review2 = new Review(
-  vehicle2,
-  tester2,
-  3,
-  "Lots of rust, but still reliable."
-);
-
-let review3 = new Review(
-  vehicle1,
-  tester2,
-  5,
-  "Good ride, but wish it charged faster."
-);
-let review4 = new Review(
-  vehicle2,
-  tester1,
-  5,
-  "Best car I've ever driven!"
-);
-
-review1.addReview();
-review2.addReview();
-review3.addReview();
-review4.addReview();
-
-console.log("RESTER", tester1);
-console.log("V  ", vehicle1);
-console.log("R   ", review1);
-console.log("F    ", vehicle1.findReviewByTester("Bob Jones"));
-// console.log(filtered1);
 
 module.exports = Vehicle;
