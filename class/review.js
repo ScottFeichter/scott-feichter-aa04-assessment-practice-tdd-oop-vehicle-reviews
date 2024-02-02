@@ -10,6 +10,20 @@ class Review {
     this.starRating = starRating;
     this.text = text;
   }
+  addReview() {
+    this.vehicle.reviews.push(this);
+    this.tester.reviews.push(this);
+  }
+
+  static filterByStars(starFilter, ...reviews) {
+    let filteredReviews = [];
+    for (let review of reviews) {
+      if (review.starRating === starFilter) {
+        filteredReviews.push(review);
+      }
+    }
+    return filteredReviews;
+  }
 }
 
 module.exports = Review;
