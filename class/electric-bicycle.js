@@ -1,4 +1,4 @@
-// const Vehicle = require("./vehicle.js");
+const Vehicle = require("./vehicle.js");
 const Bicycle = require("./bicycle.js");
 // const Review = require("./review.js");
 // const Tester = require("./tester.js");
