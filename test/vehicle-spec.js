@@ -269,6 +269,8 @@ describe("Data Manipulation - Instance and Static Methods", function () {
     expect(filtered2).to.include(review4);
   });
 
+  //--------------------------------------------------------------------------------
+
   it("should find one vehicle review by tester name", function () {
     let tester1 = new Tester("Bob Jones");
     let vehicle1 = new Vehicle("Toyota Prius", 2005, 23000);
@@ -307,9 +309,12 @@ describe("Data Manipulation - Instance and Static Methods", function () {
     review4.addReview();
 
     let filtered1 = vehicle1.findReviewByTester("Bob Jones");
+    console.log(filtered1);
     expect(filtered1).to.deep.equal(review1);
   });
 });
+
+//--------------------------------------------------------------------------------
 
 describe("Class Interactions - Submitting a Review", function () {
   it("tester can submit review for valid vehicle", function () {
@@ -335,6 +340,7 @@ describe("Class Interactions - Submitting a Review", function () {
     expect(validVehicle.reviews[0].text).to.equal("Very cozy.");
   });
 
+//--------------------------------------------------------------------------------
   it("tester cannot submit review if vehicle is invalid", function () {
     let tester = new Tester("Bob Jones");
     let invalidVehicle = new Vehicle(5);
@@ -352,6 +358,8 @@ describe("Class Interactions - Submitting a Review", function () {
     // check review is not in vehicle's reviews
     expect(invalidVehicle.reviews).to.have.length(0);
   });
+
+//--------------------------------------------------------------------------------
 
   it("tester receives attribute of bikeTester and/or eBikeTester after successfully submitting a review.", function () {
     let tester = new Tester("Bob Jones");

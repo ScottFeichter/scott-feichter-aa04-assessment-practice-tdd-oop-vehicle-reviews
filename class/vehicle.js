@@ -1,7 +1,7 @@
 // const Bicycle = require("./bicycle.js");
 // const ElectricBicycle = require("./electric-bicycle.js");
-// const Review = require("./review.js");
-// const Tester = require("./tester.js");
+const Review = require("./review.js");
+const Tester = require("./tester.js");
 
 class Vehicle {
   constructor(modelName, year, price, reviews = []) {
@@ -34,16 +34,56 @@ class Vehicle {
   }
   findReviewByTester(testerName) {
     for (let review of this.reviews) {
-      console.log("review of this.reviews", review);
+      debugger;
+      // console.log("review:    ", review);
       for (let key in review) {
-        console.log("key in review", key);
-        if (review[key] === testerName) {
-          return review;
+        // console.log("key:    ", key);
+        // console.log("review[key]:   ", review[key], typeof review[key]);
+        for (let k in review[key]) {
+          // console.log("k:     ");
+          if (review[key][k] === testerName) {
+            // console.log("review[key][k]:   ", review[key][k]);
+            return review;
+          }
         }
       }
     }
     return;
   }
 }
+
+let tester1 = new Tester("Bob Jones");
+let vehicle1 = new Vehicle("Toyota Prius", 2005, 23000);
+let review1 = new Review(
+  vehicle1,
+  tester1,
+  1,
+  "Great car, excellent gas mileage!"
+);
+
+let tester2 = new Tester("Desiree Smith");
+let vehicle2 = new Vehicle("Dodge Ram", 1985, 300);
+let review2 = new Review(
+  vehicle2,
+  tester2,
+  3,
+  "Lots of rust, but still reliable."
+);
+
+let review3 = new Review(
+  vehicle1,
+  tester2,
+  5,
+  "Good ride, but wish it charged faster."
+);
+let review4 = new Review(vehicle2, tester1, 5, "Best car I've ever driven!");
+
+review1.addReview();
+review2.addReview();
+review3.addReview();
+review4.addReview();
+
+let filtered1 = vehicle1.findReviewByTester("Bob Jones");
+console.log(filtered1);
 
 module.exports = Vehicle;
